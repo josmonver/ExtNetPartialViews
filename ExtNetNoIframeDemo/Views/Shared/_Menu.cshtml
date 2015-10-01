@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+    var X = Html.X();
+}
+
+@(X.Panel()
+    .Layout(LayoutType.HBox)
+    .Frame(true)
+    .BodyPadding(5)
+    .MarginSpec("0 0 5 0")
+    .Defaults(X.Parameter().Name("margin").Value("0 5 0 0").Mode(ParameterMode.Value))
+    .LayoutConfig(new HBoxLayoutConfig { Align = HBoxAlign.Middle, Pack = BoxPack.Start })
+    .Items(
+        X.Label().Text("_Menu.cshtml (Html.Partial() in _Layout ->"),
+        X.Button().Text("MainMenu1").Flat(true).DirectEvents(e1 =>
+        {
+            e1.Click.Url = Url.Action("MainMenu1", "Home");
+            e1.Click.ExtraParams.Add(new { containerId = "subMenuContainer" });
+        }),
+        X.Button().Text("MainMenu2").Flat(true).DirectEvents(e2 =>
+        {
+            e2.Click.Url = Url.Action("MainMenu2", "Home");
+            e2.Click.ExtraParams.Add(new { containerId = "subMenuContainer" });
+        })
+))
+
+
+

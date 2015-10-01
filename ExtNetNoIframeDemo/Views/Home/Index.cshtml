@@ -1,0 +1,19 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@(Html.X().Container()
+    .ID("subMenuContainer")
+    .Layout(LayoutType.Border)
+    .Padding(5)
+    .Height(450)
+    .Loader(Html.X().ComponentLoader()
+        .Url(Url.Action("MainMenu1", "Home"))
+        .Mode(LoadMode.Script)
+        .Params(new { containerId = "subMenuContainer" })
+        .LoadMask(lm => lm.ShowMask = true)
+    )
+)

@@ -1,0 +1,31 @@
+﻿
+@Html.Partial("_SubMenu")
+
+
+@(Html.X().Panel()
+    .Title("PartialView1 redered as partial view")
+    .BodyPadding(5)
+    .Frame(true)
+    .Items(
+        Html.X().Button().Text("Simulate ajax").Icon(Icon.Disk)
+        .Listeners(ls =>
+        {
+            ls.Click.Fn = "simulateAjax";
+        })
+    )
+    
+)
+
+<script type="text/javascript">
+
+    var simulateAjax = function () {
+        Ext.Ajax.request({
+            method: "GET",
+            url: '@Url.Action("SimulateAjax", "Controller1")',
+            cleanRequest: true,
+            success: function () { console.log('simulate ajax success') },
+            failure: function () { console.log('simulate ajax fail!') },
+        });
+    }
+
+</script>

@@ -1,0 +1,14 @@
+﻿@{
+    var X = Html.X();
+}
+
+@Html.Partial("_SubMenu")
+
+@(Html.X().Panel()
+    .ID("mainContainer2")
+    .Title("PartialView2 redered as partial view")
+    .Layout(LayoutType.HBox)
+    .Frame(true)
+    .BodyPadding(5)
+    .MarginSpec("0 0 5 0")
+)

@@ -1,0 +1,37 @@
+﻿@{
+    var X = Html.X();
+}
+
+@(X.Panel()
+    .Layout(LayoutType.HBox)
+    .Frame(true)
+    .BodyPadding(5)
+    .MarginSpec("0 0 5 0")
+    .Defaults(X.Parameter().Name("margin").Value("0 5 0 0").Mode(ParameterMode.Value))
+    .LayoutConfig(new HBoxLayoutConfig { Align = HBoxAlign.Middle, Pack = BoxPack.Start })
+    .Items(
+        X.Label().Text("PartialView MainMenu2"),
+        X.Button().Text("SubMenu3").Flat(true).DirectEvents(e1 =>
+        {
+            e1.Click.Url = Url.Action("PartialView3", "Controller3");
+            e1.Click.ExtraParams.Add(new { containerId = "mainContainer" });
+        }),
+        X.Button().Text("SubMenu4").Flat(true).DirectEvents(e2 =>
+        {
+            e2.Click.Url = Url.Action("PartialView4", "Controller4");
+            e2.Click.ExtraParams.Add(new { containerId = "mainContainer" });
+        })
+))
+
+@(Html.X().Container()
+    .ID("mainContainer")
+    .Layout(LayoutType.Border)
+    .Padding(5)
+    .Height(400)
+        .Loader(Html.X().ComponentLoader()
+            .Url(Url.Action("PartialView3", "Controller3"))
+            .Mode(LoadMode.Script)
+            .Params(new { containerId = "mainContainer" })
+            .LoadMask(lm => lm.ShowMask = true)
+        )
+)

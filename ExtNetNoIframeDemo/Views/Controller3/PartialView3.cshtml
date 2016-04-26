@@ -1,10 +1,36 @@
-﻿
-@Html.Partial("_SubMenu2")
-
+﻿@Html.Partial("_SubMenu2")
 
 @(Html.X().Panel()
     .Title("PartialView3 redered as partial view")
     .BodyPadding(5)
     .Frame(true)
-    
+    .Items(
+       Html.X().Button()
+            .Text("Show Window (Client Event)")
+            .Icon(Icon.Application)
+            .Handler("App.Window1.show();")
+    )
+)
+@(Html.X().Window()
+    .Hidden(true)
+    .ID("Window1")
+    .Title("Dialog demo")
+    .Icon(Icon.Application)
+    .Height(185)
+    .Width(350)
+    .BodyPadding(5)
+    .Modal(true)
+    .Items(
+        Html.X().Container()
+            .ID("popupContainer")
+            .Layout(LayoutType.Border)
+            .Padding(5)
+            .Height(450)
+            .Loader(Html.X().ComponentLoader()
+                .Url(Url.Action("Index", "Dialog"))
+                .Mode(LoadMode.Script)
+                .Params(new { containerId = "popupContainer" })
+                .LoadMask(lm => lm.ShowMask = true)
+            )
+        ) // /Items
 )

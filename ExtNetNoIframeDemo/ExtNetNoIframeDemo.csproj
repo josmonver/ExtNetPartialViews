@@ -180,6 +180,7 @@
     <Compile Include="Controllers\Controller4Controller.cs" />
     <Compile Include="Controllers\Controller2Controller.cs" />
     <Compile Include="Controllers\Controller1Controller.cs" />
+    <Compile Include="Controllers\DialogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,6 +231,7 @@
     <Content Include="Views\Controller3\PartialView3.cshtml" />
     <Content Include="Views\Controller4\PartialView4.cshtml" />
     <Content Include="Views\Shared\_SubMenu2.cshtml" />
+    <Content Include="Views\Shared\_Dialog.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
